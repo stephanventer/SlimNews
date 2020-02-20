@@ -14,7 +14,7 @@
         font-size: 48pt;
       }
       h2 {
-        font-size: 16pt;
+        font-size: 18pt;
       }
 
       a {
@@ -25,6 +25,11 @@
       a:hover {
         color: #777777;
       }
+      
+      span.articledate {
+        color:#777777;
+        font-size: 10pt;
+      }
     </style>
     <script>
 
@@ -34,7 +39,7 @@
     <h1>slimnews</h1>
     <!-- For loop logic of jinja template -->
     {%for i in range(0, len)%} 
-    <h2 class="article-heading"><a href="{{articles[i]['url']}}">{{articles[i]['title']}}</a></h2> 
+    <h2 class="article-heading"><a href="{{articles[i]['url']}}">{{articles[i]['title']}}</a> <span class="articledate">{{articles[i]['date']}}</span></h2> 
     {%endfor%} 
   </body>
 </html>
