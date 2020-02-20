@@ -1,16 +1,19 @@
-import requests
-import flask
-from bs4 import BeautifulSoup
+from flask import Flask, render_template
+import scrape      
+import json
 
-base_url = "https://www.nzherald.co.nz"
-response = requests.get(base_url,"/nz/news/headlines.cfm")
-soup = BeautifulSoup(response.text,"html.parser")
-templist = soup.select("a[href*='article.cfm']")
+#Define app
+app = Flask(__name__)
 
-nz_news_list = []
-for i in templist:
-    item_title = i.text.strip()
-    item_url = base_url + i.get("href")
-    nz_news_list.append({item_title,item_url})
+#Get list of articles
+nz_articles = scrape.GetHeraldNZArticles()
+#print(nz_articles[0]["title"])
 
-print(nz_news_list)
+#Define Homepage
+@app.route("/")
+def home():
+    return render_template("index.html", len=len(nz_articles), articles=nz_articles)
+
+#Start app
+if __name__ == "__main__":
+    app.run(use_reloader=True, debug=True)

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>slimnews</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');
+      body {
+        font-family: 'Playfair Display', serif;
+        margin: 50px;
+      }
+      h1 {
+        text-decoration: underline dotted;
+        font-size: 48pt;
+      }
+      h2 {
+        font-size: 16pt;
+      }
+
+      a {
+        text-decoration: none;
+        color: black;
+      }
+
+      a:hover {
+        color: #777777;
+      }
+    </style>
+    <script>
+
+    </script>
+  </head>
+  <body>
+    <h1>slimnews</h1>
+    <!-- For loop logic of jinja template -->
+    {%for i in range(0, len)%} 
+    <h2 class="article-heading"><a href="{{articles[i]['url']}}">{{articles[i]['title']}}</a></h2> 
+    {%endfor%} 
+  </body>
+</html>
